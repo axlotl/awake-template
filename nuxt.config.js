@@ -37,7 +37,16 @@ export default {
   /*
    ** Build configuration
    */
-  build: build
+  build: build,
+
+  /*
+  *  Vue
+  */
+  vue: {
+    config: {
+
+    }
+  }
 }
 
 /**

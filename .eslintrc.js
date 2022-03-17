@@ -8,20 +8,28 @@ module.exports = {
     parser: 'babel-eslint'
   },
   extends: [
-    'prettier',
-    'prettier/vue',
-    'plugin:prettier/recommended',
+    //'prettier',
+    //'prettier/vue',
+    //'plugin:prettier/recommended',
     '@nuxtjs',
     'plugin:nuxt/recommended'
   ],
   plugins: [
-    'prettier'
+    //'prettier'
   ],
   // add your custom rules here
   rules: {
     "no-console": "off",
     "vue/no-v-html": "off",
     "vue/html-self-closing": "off",
-    "nuxt/no-timing-in-fetch-data": "off"
+    "nuxt/no-timing-in-fetch-data": "off",
+
+    "no-tabs": "off",
+    "no-trailing-spaces": "off",
+    "no-mixed-spaces-and-tabs": 0,
+    "eslint-disable" : "on",
+    //"vue/html-indent": ["error", "tab"],
+
+
   }
 }
