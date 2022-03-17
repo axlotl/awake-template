@@ -1,23 +1,23 @@
 <template>
 	<div id="feed-container">
 		<main-section theme="one-column">
-		  <template v-slot:default>
-		    <h1>feed list</h1>
-		    <p>count: {{ count }}</p>
-		    <ul>
-		    	<li v-for="(rssItem) in rssItemJSON" :key="rssItem.title" v-html="rssItem.content">
-		    		<!-- <template v-if='typeof(rssItem) === "string"'>
-		    			<p>string? {{ rssItem }}</p>
-		    		</template>
-		    		<p>type: {{ typeof(rssItem) }}</p>
-		    		<p class="item">item: {{ rssItem }}</p> -->
-		    	</li>
-		    </ul>
-		    <h2>json block</h2>		
-		    <pre>
-		    	{{ rssItemJSON }}
-		    </pre>
-		  </template>
+			<template v-slot:default>
+				<h1>feed list</h1>
+				<p>count: {{ count }}</p>
+			<ul>
+				<li v-for="(rssItem) in rssItemJSON" :key="rssItem.title" v-html="rssItem.content">
+					<!-- <template v-if='typeof(rssItem) === "string"'>
+						<p>string? {{ rssItem }}</p>
+					</template>
+					<p>type: {{ typeof(rssItem) }}</p>
+					<p class="item">item: {{ rssItem }}</p> -->
+				</li>
+			</ul>
+			<h2>json block</h2>		
+			<pre>
+				{{ rssItemJSON }}
+			</pre>
+			</template>
 		</main-section>
 	</div>
 </template>

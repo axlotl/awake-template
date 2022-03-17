@@ -1,10 +1,10 @@
 <template>
-  <div class="post-sidebar box">
-    Sidear Here
-  </div>
+	<div class="post-sidebar box">
+		Sidear Here
+	</div>
 </template>
 <script>
 export default {
-  name: 'PostSidebar'
+	name: 'PostSidebar'
 }
 </script>
