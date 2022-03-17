@@ -28,7 +28,7 @@ module.exports = {
     "no-trailing-spaces": "off",
     "no-mixed-spaces-and-tabs": 0,
     "eslint-disable" : "on",
-    //"vue/html-indent": ["error", "tab"],
+    "vue/html-indent": ["error", "tab"],
 
 
   }
