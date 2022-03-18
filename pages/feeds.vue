@@ -8,13 +8,9 @@
 				</pre>
 				<h1>feed list</h1>
 				<p>count: {{ count }}</p>
+				<!-- <p>displayed: {{ displayedCount }}</p> -->
 				<ul>
-					<li v-for="(rssItem) in rssItemJSON" :key="rssItem.title" v-html="rssItem.content">
-						<!-- <template v-if='typeof(rssItem) === "string"'>
-						<p>string? {{ rssItem }}</p>
-					</template>
-					<p>type: {{ typeof(rssItem) }}</p>
-					<p class="item">item: {{ rssItem }}</p> -->
+					<li v-for="(rssItem) in feedItems" :key="rssItem.title" v-html="rssItem.content">
 					</li>
 				</ul>
 			</template>
@@ -30,6 +26,7 @@ export default {
 
 		return {
 			rssList,
+			feedItems: [],
 			rssItemJSON: []
 
 		}
@@ -46,32 +43,38 @@ export default {
 			const Parser = require("rss-parser");
 			let parser = new Parser();
 			this.count = 0;
-			
+			//this.diplsayedCount = 0;
 			console.log(rssList)
 			let rssURLList = [];
-			for( let k in rssList){
+
+			for( let k in rssList ){
 				
-				rssList[k].feeds.forEach(url =>{
+				rssList[k].feeds.forEach( url => {
 					console.log('url', url);
 					
 					
 					(async () => {
-						
-						
-						let feed = await parser.parseURL(CORS_PROXY + url);
-						console.log('feed',feed);
-						if(!feed){
-							return;
-						}
-						this.rssItemJSON = feed.items;
+						try {
+							console.log('inside async, fetching');
+							
+							let feed = await parser.parseURL(CORS_PROXY + url);
+							console.log('feed',feed);
+							if(!feed){
+								return;
+							}
+							
+							//this needs to be inside that loop
+							this.rssItemJSON = feed.items;
 							feed.items.forEach(item => {
-								this.count++;
-								
-							});
+								this.feedItems.push(item);
+								this.count++;		
+							});	
+						} catch(e) {
+							console.log('e: ', e);
+						}
+						
 					})();
 				});
-				//console.log(rssURLList)
-
 			}
 		}
 	}
