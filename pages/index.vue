@@ -15,8 +15,8 @@
 				<posts-grid />
 			</template>
 			<template v-slot:sidebar>
-				Nothing here
-      </template>
+				hi there
+			</template>
 		</main-section>
 		<news-letter-form-modal />
 	</div>
