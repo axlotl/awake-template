@@ -2,15 +2,19 @@
 	<div id="feed-container">
 		<main-section theme="one-column">
 			<template v-slot:default>
-				<h2>rss json type: {{ typeof(rssList) }}</h2>
+				<h2>rssList type: {{ typeof(rssList) }}</h2>
 				<pre>
-				{{ rssList.electric.feeds }}
+				
 				</pre>
 				<h1>feed list</h1>
 				<p>count: {{ count }}</p>
 				<!-- <p>displayed: {{ displayedCount }}</p> -->
 				<ul>
-					<li v-for="(rssItem) in feedItems" :key="rssItem.title" v-html="rssItem.content">
+					<!-- <li v-for="(rssItem) in feedItems" :key="rssItem.title" v-bind="rssItem" v-html="rssItem.content"> -->
+					<li v-for="(rssItem) in feedItems" :key="rssItem.title" v-bind="rssItem" >
+						<p>RSS ITEM</p>
+						<pre> {{ rssItem }}</pre>
+						<div v-html="rssItem.content"></div>
 					</li>
 				</ul>
 			</template>
@@ -26,6 +30,7 @@ export default {
 
 		return {
 			rssList,
+			//rssURLList,
 			feedItems: [],
 			rssItemJSON: []
 
@@ -45,14 +50,14 @@ export default {
 			this.count = 0;
 			//this.diplsayedCount = 0;
 			console.log(rssList)
-			let rssURLList = [];
+			//let rssURLList = [];
 
 			for( let k in rssList ){
 				
 				rssList[k].feeds.forEach( url => {
 					console.log('url', url);
 					
-					
+					//rssURLList.push(url);
 					(async () => {
 						try {
 							console.log('inside async, fetching');
@@ -63,9 +68,10 @@ export default {
 								return;
 							}
 							
-							//this needs to be inside that loop
-							this.rssItemJSON = feed.items;
+							
+							
 							feed.items.forEach(item => {
+								this.rssItemJSON.push( item );
 								this.feedItems.push(item);
 								this.count++;		
 							});	
@@ -74,6 +80,7 @@ export default {
 						}
 						
 					})();
+					//console.log('rssURLList ', rssURLList );
 				});
 			}
 		}
