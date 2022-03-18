@@ -23,6 +23,8 @@
 </template>
 <script>
 /* eslint-disable */
+
+//https://nordot.app/-/feed/posts/rss?source_id=877587091591004160&curation_url=true
 import { mapState } from 'vuex';
 import rssList from '~/assets/data/rss-feeds.json';
 export default {

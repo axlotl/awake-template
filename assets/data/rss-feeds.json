@@ -1,0 +1,68 @@
+{
+	"electric" : {
+		"label" : "Electric Cars",
+		"feeds": [
+			"https://www.teslarati.com/feed/",
+			"https://insideevs.com/feed/",
+			"https://electrek.co/feed/"
+		],
+		"interval" : ""
+	},
+	"industry": {
+		"label": "Industry",
+		"feeds": [
+			"https://feeds.feedburner.com/MobilityReport",
+			"https://feeds.bbci.co.uk/news/business/global_car_industry/rss.xml"
+		]
+	},
+	"news": {
+		"label": "News",
+		"feeds": [
+			"https://feeds.feedburner.com/autonews/BreakingNews",
+			"https://www.motortrend.com/feed/"
+		]
+	},
+	"shows": {
+		"label": "Auto Shows",
+		"feeds": [
+			"https://feeds.highgearmedia.com/?sites=TheCarConnection&type=blog&tags=auto-shows"
+		]
+	},
+	"offbeat": {
+		"label": "Offbeat",
+		"feeds": [
+			"https://www.carscoops.com/tag/offbeat-news/feed/"
+		]
+	},
+	"reviews": {
+		"label": "Reviews",
+		"feeds": [
+			"https://feeds.highgearmedia.com/?sites=TheCarConnection&type=reviews",
+			"https://www.carscoops.com/tag/reviews/feed/"
+		]
+	},
+	"concept": {
+		"label": "Concept Cars",
+		"feeds": [
+			"https://feeds.highgearmedia.com/?sites=TheCarConnection&type=all&tags=concept"
+		]
+	},
+	"spy": {
+		"label": "Spy Photos",
+		"feeds": [
+			"https://feeds.feedburner.com/motorauthority2"
+		]
+	},
+	"marketing": {
+		"label": "Marketing",
+		"feeds": [
+			"https://feeds.feedburner.com/autonews/MarketingNews"
+		]
+	},
+	"europe": {
+		"label": "Europe",
+		"feeds": [
+			"https://feeds.feedburner.com/autonews/EuropeNews"
+		]
+	}	
+}

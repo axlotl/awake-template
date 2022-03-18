@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-subtitle: Get Up and Running with Awake
+subtitle: Get Up and Running with Awake already!
 category:
   - About Awake
 author: Daniel Kelly
