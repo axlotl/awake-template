@@ -94,3 +94,5 @@ static/admin
 # rss-generated posts
 content/posts/_*
 assets/uploads/rss-images
+parser/images
+parser/markdown

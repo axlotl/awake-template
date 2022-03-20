@@ -5,7 +5,7 @@
 			class="button is-fullwidth is-outlined is-large"
 			@click="displayed = true"
 		>
-			Load Comments
+			Load Comments....
 		</a>
 		<intersection-observer
 			v-if="$siteConfig.disqus.loadingStrategy === 'lazy'"

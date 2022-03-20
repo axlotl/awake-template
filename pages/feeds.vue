@@ -11,7 +11,7 @@
 				<!-- <p>displayed: {{ displayedCount }}</p> -->
 				<ul>
 					<!-- <li v-for="(rssItem) in feedItems" :key="rssItem.title" v-bind="rssItem" v-html="rssItem.content"> -->
-					<li v-for="(rssItem) in feedItems" :key="rssItem.title" v-bind="rssItem" >
+					<li v-for="(rssItem) in feedItems" :key="rssItem.title" v-bind="rssItem">
 						<p>RSS ITEM</p>
 						<pre> {{ rssItem }}</pre>
 						<div v-html="rssItem.content"></div>

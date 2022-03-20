@@ -5,6 +5,7 @@
 		"
 	>
 		<site-nav />
+		<p>default.vue</p>
 		<nuxt />
 		<news-letter-slide-out v-if="$siteConfig.newsletter.on" />
 		<site-footer></site-footer>

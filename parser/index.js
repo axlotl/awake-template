@@ -44,29 +44,35 @@ let count = 0;
 
 
 function retrieveImage(url, filename){
+
 	const extension = url.match(/\.(jpg|webp|gif|png|jpeg)$/gm);
 	const imagename = filename + extension;
-	console.log(filename);
-	const path = '/uploads/rss-images/' + imagename;
+	
+	//const path = '/uploads/rss-images/' + imagename;
+	const path = '/images/' + imagename;
+	console.log('image: ', path);
 
 	axios({ 
 		url,
 		method : 'GET',
 		responseType : 'stream' 
 	})
-	.then(response => new Promise((resolve, reject) => {
-				response.data
-				.pipe(fs.createWriteStream( path ))
-				.on('finish', () => resolve())
-				.on('error', e => reject(e));
-		})
-	);
+	.then(function (response) {
+		//response.data.pipe( fs.createWriteStream(CWD + "../assets/" + path ) );
+		try {
+			response.data.pipe( fs.createWriteStream( path ) );	
+		} catch( err ){
+			console.log( 'error: ', err );
+		}
+		
+	});
+
 	return path;
 }
 
 function writeMarkdown(itemObj){
 
-	let filename = itemObj.title.replace(/\s/g, '_').replace(/:|,|\'/,'').substr(0,16);
+	let filename = itemObj.title.replace(/\s/g, '_').replace(/:|,|\'/,'').substr(0,20);
 
 	//grab a local copy of the item's image
 	let img = retrieveImage(itemObj["media:thumbnail"].$.url, filename);
@@ -83,12 +89,14 @@ function writeMarkdown(itemObj){
 	markdown += "## Synopsis...\n\n\n";
 	markdown += itemObj.contentSnippet + "\n\n\n";
 	markdown += "## And more...\n\n\n";
-	markdown += itemObj.content;
+	markdown += itemObj.content + "\n\n\n";
 	markdown += "## get the full story\n\n\n";
 	markdown += "[Full Story](" + itemObj.guid + ")\n\n\n";
 
 	//console.log(markdown);
-	fs.writeFile( CWD + '/../content/posts/_' + filename + ".md", markdown, function(e){
+	//let target = CWD + '/../content/posts/_' + filename + ".md";
+	let target = CWD + '/markdown/' + filename + ".md";
+	fs.writeFile( target, markdown, function(e){
 			if(e){
 				return console.log('error: ', e);
 			}
