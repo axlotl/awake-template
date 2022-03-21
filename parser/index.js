@@ -48,9 +48,10 @@ function retrieveImage(url, filename){
 	const extension = url.match(/\.(jpg|webp|gif|png|jpeg)$/gm);
 	const imagename = filename + extension;
 	
-	//const path = '/uploads/rss-images/' + imagename;
-	const path = '/images/' + imagename;
-	console.log('image: ', path);
+	const targetPath = CWD + '/../assets/uploads/rss-images/' + imagename;
+	const CMSPath = '/uploads/rss-images/' + imagename;
+	const localPath = CWD + '/images/' + imagename;
+	console.log('image: ', localPath);
 
 	axios({ 
 		url,
@@ -60,14 +61,15 @@ function retrieveImage(url, filename){
 	.then(function (response) {
 		//response.data.pipe( fs.createWriteStream(CWD + "../assets/" + path ) );
 		try {
-			response.data.pipe( fs.createWriteStream( path ) );	
+			response.data.pipe( fs.createWriteStream( targetPath ) );	
 		} catch( err ){
 			console.log( 'error: ', err );
 		}
 		
 	});
 
-	return path;
+	//return path;
+	return CMSPath;
 }
 
 function writeMarkdown(itemObj){
@@ -96,6 +98,7 @@ function writeMarkdown(itemObj){
 	//console.log(markdown);
 	//let target = CWD + '/../content/posts/_' + filename + ".md";
 	let target = CWD + '/markdown/' + filename + ".md";
+	console.log('target: ' , target);
 	fs.writeFile( target, markdown, function(e){
 			if(e){
 				return console.log('error: ', e);
